@@ -1,13 +1,13 @@
-import { Header } from './components/Header';
+import { Header } from './Header';
 import { useState, useEffect } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { arrayMove } from '@dnd-kit/sortable';
-import { LocationGrid } from './components/LocationGrid';
-import { Sidebar } from './components/Sidebar';
-import { MapView } from './components/MapView';
-import { SettingsView } from './components/SettingsView';
-import { LocationFormModal } from './components/LocationFormModal';
-import { ConfirmationModal } from './components/ConfirmationModal';
+import { LocationGrid } from './LocationGrid';
+import { Sidebar } from './Sidebar';
+import { MapView } from './MapView';
+import { SettingsView } from './SettingsView';
+import { LocationFormModal } from './LocationFormModal';
+import { ConfirmationModal } from './ConfirmationModal';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
