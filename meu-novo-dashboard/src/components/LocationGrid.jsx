@@ -9,8 +9,8 @@ import {
   SortableContext,
   rectSortingStrategy,
 } from '@dnd-kit/sortable';
-import { SortableLocationCard } from './SortableLocationCard.jsx';
-import { LocationCardSkeleton } from './LocationCardSkeleton.jsx';
+import { SortableLocationCard } from './SortableLocationCard';
+import { LocationCardSkeleton } from './LocationCardSkeleton';
 
 export function LocationGrid({ searchTerm, locations, isLoading, onDeleteLocation, onEditLocation, onReorder }) {
   const filteredLocations = locations.filter(location => 
