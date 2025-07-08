@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { arrayMove } from '@dnd-kit/sortable';
 import { LocationGrid } from './LocationGrid';
-import { Sidebar } from './Sidebar';
+import { Sidebar } from './SideBar';
 import { MapView } from './MapView';
 import { SettingsView } from './SettingsView';
 import { LocationFormModal } from './LocationFormModal';
