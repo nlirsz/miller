@@ -8,7 +8,6 @@ import { MapView } from './components/MapView';
 import { SettingsView } from './components/SettingsView';
 import { LocationFormModal } from './components/LocationFormModal';
 import { ConfirmationModal } from './components/ConfirmationModal';
-import { mockLocations } from './data/mockLocations';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,27 +21,30 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading and fetch initial data from localStorage or mocks
-    const timer = setTimeout(() => {
+    const fetchInitialData = async () => {
       try {
         const savedLocations = localStorage.getItem('travel-dashboard-locations');
-        // Use saved data only if it exists and is not an empty array
         if (savedLocations && JSON.parse(savedLocations).length > 0) {
           setLocations(JSON.parse(savedLocations));
         } else {
-          // Otherwise, use mock data as the initial set
-          setLocations(mockLocations);
+          // If no saved data, fetch from the "API"
+          const response = await fetch('/mockLocations.json');
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          setLocations(data);
         }
       } catch (error) {
-        console.error("Failed to load or parse locations from localStorage", error);
-        // Fallback to mock data in case of errors
-        setLocations(mockLocations);
+        console.error("Failed to fetch initial locations:", error);
+        // Fallback to an empty array in case of fetch or parse errors
+        setLocations([]);
       } finally {
         setIsLoading(false);
       }
-    }, 1500);
+    };
 
-    return () => clearTimeout(timer);
+    fetchInitialData();
   }, []); // Empty dependency array ensures this runs only once on mount
 
   // Effect to save locations to localStorage whenever they change
