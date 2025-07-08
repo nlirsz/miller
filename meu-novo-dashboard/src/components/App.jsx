@@ -7,7 +7,7 @@ import { Sidebar } from './SideBar';
 import { MapView } from './MapView';
 import { SettingsView } from './SettingsView';
 import { LocationFormModal } from './LocationFormModal';
-import { ConfirmationModal } from './ConfirmationModal';
+import { ConfirmationModal } from './ConfirmationModel';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
